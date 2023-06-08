@@ -1,0 +1,7 @@
+canvas {
+  position: absolute;
+  background-color: #000;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+}
