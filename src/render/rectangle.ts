@@ -1,6 +1,6 @@
 // src/render/rectangle.ts
 
-import { Vector2D } from "../primitive/types";
+import { Vector2D } from "../util/physics";
 
 export class Rectangle {
     constructor(
