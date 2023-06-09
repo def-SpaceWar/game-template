@@ -7,7 +7,7 @@ import { Rectangle } from './render/rectangle';
 import { areColliding } from './util/physics';
 
 export const [width, height] = [800, 800];
-export const [keys, getKey] = initKeys();
+const [keys, getKey] = initKeys();
 const ctx = initFixedContext(width, height);
 
 const rectangle1 = new Rectangle([60, 60], [100, 100], 'red');
