@@ -5,7 +5,7 @@ export const initFixedContext = (w = 800, h = 800) => {
         .appendChild(document.createElement('canvas')),
         ctx = canvas.getContext('2d');
 
-    if (!ctx) throw new Error("i like dick");
+    if (!ctx) throw new Error("2D context failed to initialize.");
 
     canvas.width = w;
     canvas.height = h;
@@ -17,7 +17,7 @@ export const initFillWindowContext = () => {
         .appendChild(document.createElement('canvas')),
         ctx = canvas.getContext('2d');
 
-    if (!ctx) throw new Error("");
+    if (!ctx) throw new Error("2D context failed to initialize.");
 
     addEventListener('resize', () => {
         canvas.width = window.innerWidth;
