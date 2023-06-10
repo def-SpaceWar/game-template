@@ -87,3 +87,7 @@ export const areColliding = (r1: RectCollider, r2: RectCollider) => {
 
     return false;
 };
+
+export type Position = {
+    pos: Vector2D;
+};

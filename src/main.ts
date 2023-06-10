@@ -1,28 +1,34 @@
 import './style.css';
 
-import { initKeys } from './primitive/keys';
 import { initFixedContext } from './primitive/graphics';
 import { type Scene, SceneState, runGame } from './primitive/scene';
+import { initKeys } from './primitive/keys';
 import { Rectangle } from './render/rectangle';
-import { areColliding } from './util/physics';
+import { Camera } from './render/camera';
 
-export const [width, height] = [800, 800];
-const [keys, getKey] = initKeys();
-const ctx = initFixedContext(width, height);
+const [_keys, getKey] = initKeys();
+const ctx = initFixedContext(800, 800);
 
-const rectangle1 = new Rectangle([60, 60], [100, 100], 'red');
-const rectangle2 = new Rectangle([150, 150], [100, 100], 'blue');
+const myRect = new Rectangle([0, 0], [100, 100], 'red');
+const myWall = new Rectangle([500, 0], [100, 1000], 'blue');
+const camera = new Camera();
 
 const SCENES: Scene[] = [dt => {
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    rectangle1.draw(ctx);
-    rectangle1.rotation += dt;
+    ctx.save();
+    camera.activate(ctx);
+    myWall.draw(ctx);
+    myRect.draw(ctx);
+    ctx.restore();
 
-    rectangle2.draw(ctx);
-    rectangle2.rotation += dt;
+    camera.drawIndicator(ctx);
 
-    console.log(areColliding(rectangle1, rectangle2));
+    camera.center(dt, myRect);
+    if (getKey('a')) myRect.pos[0] -= 300 * dt;
+    if (getKey('e')) myRect.pos[0] += 300 * dt;
+    if (getKey(',')) myRect.pos[1] -= 300 * dt;
+    if (getKey('o')) myRect.pos[1] += 300 * dt;
 
     return [SceneState.CONTINUE];
 }];
