@@ -9,7 +9,7 @@ This is a custom template for making 2D games with the HTML Canvas element that 
 
 ## TODO
 
-- Add Line drawing class renderprimitive
 - Add Text drawing class renderprimitive (not centered)
 - Add Buttons (which means adding the Listener)
 - Add Animated text drawing renderprimitive
+- Make camera be able to zoom out when needed
